@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const app = express()
 
 dotenv.config()
+mongoose.set('strictQuery', false);
 mongoose.connect(process.env.MONGO_URL, (err) => {
     if (err) throw err;
 })
