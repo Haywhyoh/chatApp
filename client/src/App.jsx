@@ -1,13 +1,16 @@
 import { useState } from 'react';
+import axios from "axios";
 import RegisterAndLoginForm from './RegisterandLogin';
+import { UserContextProvider } from './UserContext';
+import Routes from './Routes';
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  axios.defaults.baseURL = 'http://localhost:4000';
+  axios.defaults.withCredentials = true;
   return (
-    <div className='bg-red-500'>
-        <RegisterAndLoginForm />
-    </div>
+    <UserContextProvider>
+      <Routes />
+    </UserContextProvider>
   )
 }
 
