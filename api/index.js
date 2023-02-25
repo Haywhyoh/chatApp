@@ -5,6 +5,9 @@ const User = require('./models/User')
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const bcrypt = require('bcryptjs')
+const ws = require('ws')
+const fs = requore('fs')
+
 
 dotenv.config()
 const app = express()
@@ -66,4 +69,13 @@ app.post('/login', async (req, res) => {
         }
     }
 });
-app.listen(4000)
+const server = app.listen(4000)
+
+const wss = new ws.WebSocketServer({server})
+wss.on('connection', (connection, req) => {
+    //read username and cookies from data
+    const cookies = req.headers.cookies;
+    if (cookies) {
+        const tokenCookieString = cookie.split(';').find(str )
+    }
+})
